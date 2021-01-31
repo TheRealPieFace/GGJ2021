@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     {
         timeToWinGame += Time.deltaTime;
         DegradeLight();
-        rabbitCounter.text = rabbitsCaught + "/" + numberOfRabbits.ToString();
+        
     }
 
     void DegradeLight()
@@ -81,9 +81,9 @@ public class GameManager : MonoBehaviour
         if(rabbitsCaught == numberOfRabbits)
         {
             clone = Instantiate(winScreen);
-            firefliesCaughttxt.text = firefliesCaught.ToString();
-            timetoWintxt.text = timeToWinGame.ToString();
-           
+            firefliesCaughttxt.text = "Fireflies caught : " + firefliesCaught.ToString();
+            timetoWintxt.text = "Time to Complete : " + timeToWinGame.ToString();
+            rabbitCounter.text = rabbitsCaught + "/" + numberOfRabbits.ToString();
         }
     }
 
