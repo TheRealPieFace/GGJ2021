@@ -6,11 +6,14 @@ namespace UnityMovementAI
     public class FleeUnit : MonoBehaviour
     {
         public Transform target;
+        public Transform destination;
 
         SteeringBasics steeringBasics;
         Flee flee;
         Wander1 wander;
-        public bool isWandering = true;
+        private bool isWandering = true;
+        private bool isFleeing = false;
+        public bool goingToHole = false;
         public float waitTime = 1;
         public float timer = 0;
 
@@ -37,28 +40,40 @@ namespace UnityMovementAI
         {
             Vector3 acceleration = transform.position - target.position;
             Vector3 accel;
+            isFleeing = acceleration.magnitude <= flee.panicDist;
 
-            if (acceleration.magnitude <= flee.panicDist)
+            if (goingToHole)
+            {
+                accel = steeringBasics.Arrive(destination.position);
+            }
+            else if (isFleeing)
             {
                 accel = flee.GetSteering(target.position);
-                steeringBasics.Steer(accel);
-                steeringBasics.LookWhereYoureGoing();
             }
             else
             {
-                accel = wander.GetSteering();
                 if (isWandering)
                 {
-                    steeringBasics.Steer(accel);
-                    steeringBasics.LookWhereYoureGoing();
+                    accel = wander.GetSteering();                    
                 }
                 else
                 {
-                    steeringBasics.Arrive(transform.position);
+                    accel = steeringBasics.Arrive(transform.position);
                 }
             }
 
-            
+            steeringBasics.Steer(accel);
+            steeringBasics.LookWhereYoureGoing();
+
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.tag == "RabbitHole" && isFleeing)
+            {
+                destination = other.gameObject.GetComponentInChildren<Teleport>().gameObject.transform;
+                goingToHole = true;
+            }
         }
     }
 }
