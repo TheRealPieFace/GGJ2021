@@ -11,8 +11,9 @@ namespace UnityMovementAI
         SteeringBasics steeringBasics;
         Flee flee;
         Wander1 wander;
-        private bool isWandering = true;
-        private bool isFleeing = false;
+        Animator anim;
+        public bool isWandering = true;
+        public bool isFleeing = false;
         public bool goingToHole = false;
         public float waitTime = 1;
         public float timer = 0;
@@ -22,6 +23,7 @@ namespace UnityMovementAI
             steeringBasics = GetComponent<SteeringBasics>();
             flee = GetComponent<Flee>();
             wander = GetComponent<Wander1>();
+            anim = GetComponentInChildren<Animator>();
         }
 
         private void Update()
@@ -49,15 +51,21 @@ namespace UnityMovementAI
             else if (isFleeing)
             {
                 accel = flee.GetSteering(target.position);
+                ClearAnim();
+                anim.SetBool("isRunning", true);
             }
             else
             {
                 if (isWandering)
                 {
-                    accel = wander.GetSteering();                    
+                    accel = wander.GetSteering();
+                    ClearAnim();
+                    anim.SetBool("isJumping", true);
                 }
                 else
                 {
+                    ClearAnim();
+                    //anim.SetBool("isLookingOut", true);
                     accel = steeringBasics.Arrive(transform.position);
                 }
             }
@@ -74,6 +82,13 @@ namespace UnityMovementAI
                 destination = other.gameObject.GetComponentInChildren<Teleport>().gameObject.transform;
                 goingToHole = true;
             }
+        }
+
+        private void ClearAnim()
+        {
+            anim.SetBool("isJumping", false);
+            anim.SetBool("isLookingOut", false);
+            anim.SetBool("isRunning", false);
         }
     }
 }
