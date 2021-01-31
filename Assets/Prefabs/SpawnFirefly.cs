@@ -21,7 +21,7 @@ public class SpawnFirefly : MonoBehaviour
     {
         if (startcounting)
         {
-            if (timetospawn > 0)
+            if (timer > 0)
             {
                 timer -= Time.deltaTime;
             }
