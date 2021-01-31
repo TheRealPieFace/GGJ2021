@@ -4,28 +4,22 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float movementSpeed = 5.0f;
+
+    CharacterController characterController;
+    public float MovementSpeed = 1;
+    
+
+    private void Start()
+    {
+        characterController = GetComponent<CharacterController>();
+    }
 
     // Update is called once per frame
     void Update()
     {
-        Rigidbody rigidbody = GetComponent<Rigidbody>();
+        float horizontal = Input.GetAxis("Horizontal") * MovementSpeed;
+        float vertical = Input.GetAxis("Vertical") * MovementSpeed;
+        characterController.Move((Vector3.right * horizontal + Vector3.forward * vertical) * Time.deltaTime);
 
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.position += Vector3.forward * Time.deltaTime * movementSpeed;
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            rigidbody.position += Vector3.back * Time.deltaTime * movementSpeed;
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            rigidbody.position += Vector3.left * Time.deltaTime * movementSpeed;
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            rigidbody.position += Vector3.right * Time.deltaTime * movementSpeed;
-        }
     }
 }
