@@ -13,7 +13,7 @@ public class RabbitInteraction : MonoBehaviour
 
     public void Interact()
     {
-        //gameManager.CatchRabbit();
+        gameManager.CatchRabbit();
         Debug.Log("Catch Rabbit");
         Destroy(this.gameObject);
     }

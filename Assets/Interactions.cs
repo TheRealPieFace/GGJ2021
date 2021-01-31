@@ -14,15 +14,15 @@ public class Interactions : MonoBehaviour
     {
         if(rabbitsInRange.Count > 0)
         {
-            //rabbitInteractionUI.SetActive(true);
-            //fireflyInteractionUI.SetActive(false);
+            rabbitInteractionUI.SetActive(true);
+            fireflyInteractionUI.SetActive(false);
         } else if (firefliesInRange.Count > 0)
         {
-            //fireflyInteractionUI.SetActive(true);
+            fireflyInteractionUI.SetActive(true);
         } else
         {
-            //rabbitInteractionUI.SetActive(false);
-            //fireflyInteractionUI.SetActive(false);
+            rabbitInteractionUI.SetActive(false);
+            fireflyInteractionUI.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.E))

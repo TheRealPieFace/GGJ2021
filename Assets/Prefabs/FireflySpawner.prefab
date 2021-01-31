@@ -43,5 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c135de3326258454f90b49a7d473cf83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timetospawn: 0
-  Firefly: {fileID: 4949022909613457545, guid: ec438aa663855ac4a8f841743341bcd3, type: 3}
+  timetospawn: 5
+  Firefly: {fileID: 6464940753126974120, guid: b5048d5d4c87633499c7b05e1b2666b7, type: 3}
+  startcounting: 0

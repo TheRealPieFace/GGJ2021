@@ -23,10 +23,10 @@ public class SpawnFirefly : MonoBehaviour
         {
             if (timetospawn > 0)
             {
-                timetospawn -= Time.deltaTime;
+                timer -= Time.deltaTime;
             }
 
-            if (timetospawn <= 0)
+            if (timer <= 0)
             {
                 Spawn();
                 startcounting = false;
@@ -37,6 +37,7 @@ public class SpawnFirefly : MonoBehaviour
     public void Spawn()
     {
         clone = Instantiate(Firefly, transform.position, Quaternion.identity);
+        clone.GetComponent<FireFlyInteraction>().spawner = gameObject;
     }
 
     public void Start()

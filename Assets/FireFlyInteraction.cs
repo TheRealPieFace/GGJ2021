@@ -6,6 +6,7 @@ public class FireFlyInteraction : MonoBehaviour
 {
     private GameManager gameManager;
     public float fuelPercentIncrease = .5f;
+    public GameObject spawner;
 
     private void Start()
     {
@@ -15,8 +16,7 @@ public class FireFlyInteraction : MonoBehaviour
     public void Interact()
     {
         gameManager.AddFuel(fuelPercentIncrease);
-        //GetComponentInParent<SpawnFirefly>().StartTimer();
-        //Destroy(this.GameObject);
-        
+        spawner.GetComponent<SpawnFirefly>().StartCounting();
+        Destroy(this.gameObject);
     }
 }
