@@ -17,7 +17,6 @@ public class GameManager : MonoBehaviour
     {
         maxPointIntensity = lanternPoint.intensity;
         maxFuel = maxFuel - 35;
-        //lightFuel = maxFuel;
     }
 
     // Update is called once per frame
@@ -34,27 +33,14 @@ public class GameManager : MonoBehaviour
         if (lightFuel <= 0)
         {
             lightFuel = 0;
-            StartCoroutine(TurnOffLight());
+            lantern.intensity -= 5 * Time.deltaTime;
         }
     }
 
-    IEnumerator TurnOffLight()
-    {
-        yield return new WaitForSeconds(lanternRunout);
-        CheckLantern();
-    }
-
-    void CheckLantern()
-    {
-        if (lightFuel <= 0)
-        {
-            lantern.intensity = 0;
-        }
-    }
 
     public void AddFuel(float fuelAmount)
     {
-        lantern.intensity = 25;
+        lantern.intensity = 70;
         if(lightFuel + fuelAmount < 1)
         {
             lightFuel += fuelAmount;
