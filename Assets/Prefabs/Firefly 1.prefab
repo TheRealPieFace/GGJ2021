@@ -198,9 +198,10 @@ GameObject:
   - component: {fileID: 6464940753126974123}
   - component: {fileID: 4342682376831273270}
   - component: {fileID: 2324587046579280052}
+  - component: {fileID: 5649100823098299853}
   m_Layer: 8
   m_Name: Firefly 1
-  m_TagString: Untagged
+  m_TagString: Firefly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -315,3 +316,16 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 4a51ec3b319fdd246a67d779756d6ee9, type: 2}
+--- !u!114 &5649100823098299853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6464940753126974120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b18320d65961002488d58e4fd705fed0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuelPercentIncrease: 0.5

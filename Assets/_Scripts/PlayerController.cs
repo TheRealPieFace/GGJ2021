@@ -10,11 +10,13 @@ public class PlayerController : MonoBehaviour
     private float turnSmoothVelocity;
     public float movementSpeed = 1;
     public float gravity = 9.6f;
-    [SerializeField] bool playerGrounded; 
+    [SerializeField] bool playerGrounded;
+    private Animator anim;
 
     private void Start()
     {
         characterController = GetComponent<CharacterController>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -25,15 +27,17 @@ public class PlayerController : MonoBehaviour
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
-        Vector3 direction = new Vector3(horizontal, 0, vertical).normalized;
+        float yDirection = 0;
         if (!characterController.isGrounded)
         {
-            direction.y -= gravity * Time.deltaTime;
+            yDirection -= gravity * Time.deltaTime;
         }
+        Vector3 direction = new Vector3(horizontal, yDirection, vertical).normalized;
+        
 
         if (direction.magnitude >= 0.1)
         {
-            //anim.SetBool("Walking", true);
+            anim.SetBool("isWalking", true);
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSpeed);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
@@ -42,7 +46,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            //anim.SetBool("Walking", false);
+            anim.SetBool("isWalking", false);
         }
     }
 }

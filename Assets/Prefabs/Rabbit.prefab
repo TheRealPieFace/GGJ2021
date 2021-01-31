@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 1624456805339738074}
   - component: {fileID: 1624456805553464768}
   - component: {fileID: 1624456805553464771}
+  - component: {fileID: 938781160864610559}
   m_Layer: 2
   m_Name: Rabbit
   m_TagString: Rabbit
@@ -150,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6f58141e9f357e448fd2fa6f1afc1f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxVelocity: 3.75
+  maxVelocity: 3
   maxAcceleration: 6.666
   turnSpeed: 20
   targetRadius: 0.005
@@ -208,6 +209,18 @@ MonoBehaviour:
   goingToHole: 0
   waitTime: 1
   timer: 0
+--- !u!114 &938781160864610559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624456805345319652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c977a202e9355c439a55e9de5f18600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7624593151703950041
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +233,7 @@ GameObject:
   - component: {fileID: 2977487930751075923}
   m_Layer: 2
   m_Name: GameObject
-  m_TagString: Untagged
+  m_TagString: RabbitInteraction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

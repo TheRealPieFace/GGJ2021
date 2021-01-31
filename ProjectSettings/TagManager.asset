@@ -6,6 +6,8 @@ TagManager:
   tags:
   - RabbitHole
   - Rabbit
+  - Firefly
+  - RabbitInteraction
   layers:
   - Default
   - TransparentFX

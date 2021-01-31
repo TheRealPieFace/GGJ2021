@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4934454574209124483}
   - component: {fileID: 4934454574209124485}
   - component: {fileID: 4934454574209124495}
+  - component: {fileID: 3227530177980052698}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -68,6 +69,20 @@ MonoBehaviour:
   movementSpeed: 4
   gravity: 500
   playerGrounded: 0
+--- !u!114 &3227530177980052698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4934454574209124492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15bccd705777ad5439d5884da13ad44d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rabbitInteractionUI: {fileID: 0}
+  fireflyInteractionUI: {fileID: 0}
 --- !u!1 &5266607660715487511
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,6 +314,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 318840a7e38980943bb4c508fa842265, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 640c30a950b6c794c9c07b89f6669f70, type: 2}
     - target: {fileID: 13700026, guid: 318840a7e38980943bb4c508fa842265, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
