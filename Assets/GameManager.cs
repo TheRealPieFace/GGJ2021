@@ -17,19 +17,26 @@ public class GameManager : MonoBehaviour
     public Text rabbitCounter;
     private int rabbitsCaught;
     public int numberOfRabbits;
+    public int firefliesCaught;
+    public float timeToWinGame;
+    public Text firefliesCaughttxt;
+    public Text timetoWintxt;
+    GameObject clone;
+    public GameObject winScreen;
     // Start is called before the first frame update
     void Start()
     {
         maxPointIntensity = lanternPoint.intensity;
         maxFuel = maxFuel - 35;
-
+        CountRabbits();
     }
 
     // Update is called once per frame
     void Update()
     {
+        timeToWinGame += Time.deltaTime;
         DegradeLight();
-        CountRabbits();
+        rabbitCounter.text = rabbitsCaught + "/" + numberOfRabbits.ToString();
     }
 
     void DegradeLight()
@@ -47,6 +54,7 @@ public class GameManager : MonoBehaviour
 
     public void AddFuel(float fuelAmount)
     {
+        firefliesCaught += 1;
         lantern.intensity = 70;
         if (lightFuel + fuelAmount < 1)
         {
@@ -62,7 +70,7 @@ public class GameManager : MonoBehaviour
     {
         Rabbits = GameObject.FindGameObjectsWithTag("Rabbit");
         numberOfRabbits = Rabbits.Length;
-        rabbitCounter.text = rabbitsCaught + "/" + numberOfRabbits.ToString();
+        
 
     }
 
@@ -72,7 +80,10 @@ public class GameManager : MonoBehaviour
 
         if(rabbitsCaught == numberOfRabbits)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            clone = Instantiate(winScreen);
+            firefliesCaughttxt.text = firefliesCaught.ToString();
+            timetoWintxt.text = timeToWinGame.ToString();
+           
         }
     }
 
