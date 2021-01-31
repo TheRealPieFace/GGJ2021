@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 687967273151477401}
+  - component: {fileID: -2187388979443309907}
   m_Layer: 0
   m_Name: FireflySpawner
   m_TagString: Untagged
@@ -30,3 +31,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-2187388979443309907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 982111608661419328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c135de3326258454f90b49a7d473cf83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timetospawn: 0
+  Firefly: {fileID: 4949022909613457545, guid: ec438aa663855ac4a8f841743341bcd3, type: 3}
