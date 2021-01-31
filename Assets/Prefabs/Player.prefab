@@ -66,6 +66,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnSpeed: 0.1
   movementSpeed: 4
+  gravity: 500
+  playerGrounded: 0
 --- !u!1 &5266607660715487511
 GameObject:
   m_ObjectHideFlags: 0

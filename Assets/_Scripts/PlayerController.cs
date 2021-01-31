@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour
     {
         playerGrounded = characterController.isGrounded;
 
-        KeepGrounded();
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -44,16 +43,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             //anim.SetBool("Walking", false);
-        }
-    }
-
-    void KeepGrounded()
-    {
-        if (!characterController.isGrounded)
-        {
-            Vector3 moveDirection = new Vector3();
-            moveDirection.y -= gravity * Time.deltaTime;
-            characterController.Move(moveDirection * Time.deltaTime);
         }
     }
 }
