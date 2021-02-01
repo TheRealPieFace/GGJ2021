@@ -70,20 +70,25 @@ public class GameManager : MonoBehaviour
     {
         Rabbits = GameObject.FindGameObjectsWithTag("Rabbit");
         numberOfRabbits = Rabbits.Length;
-        
+        rabbitCounter.text = "Rabbits Caught " + rabbitsCaught + "/" + numberOfRabbits.ToString();
 
     }
 
     public void CatchRabbit()
     {
         rabbitsCaught += 1;
+        rabbitCounter.text = "Rabbits Caught " + rabbitsCaught + "/" + numberOfRabbits.ToString();
 
-        if(rabbitsCaught == numberOfRabbits)
+        if (rabbitsCaught == numberOfRabbits)
         {
-            clone = Instantiate(winScreen);
+            winScreen.SetActive(true);
+            Time.timeScale = 0;
             firefliesCaughttxt.text = "Fireflies caught : " + firefliesCaught.ToString();
-            timetoWintxt.text = "Time to Complete : " + timeToWinGame.ToString();
-            rabbitCounter.text = rabbitsCaught + "/" + numberOfRabbits.ToString();
+
+            int minutes = Mathf.FloorToInt(timeToWinGame / 60);
+            int seconds = Mathf.FloorToInt(timeToWinGame % 60);
+            timetoWintxt.text = $"Time to Complete : {minutes} Minutes and {seconds} Seconds";
+            
         }
     }
 

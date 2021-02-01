@@ -8,6 +8,8 @@ TagManager:
   - Rabbit
   - Firefly
   - RabbitInteraction
+  - RabbitSound
+  - FireflySound
   layers:
   - Default
   - TransparentFX

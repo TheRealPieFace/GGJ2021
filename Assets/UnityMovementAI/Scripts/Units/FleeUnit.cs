@@ -8,6 +8,8 @@ namespace UnityMovementAI
         public Transform target;
         public Transform destination;
 
+
+        AudioManager audioManager;
         SteeringBasics steeringBasics;
         Flee flee;
         Wander1 wander;
@@ -17,9 +19,11 @@ namespace UnityMovementAI
         public bool goingToHole = false;
         public float waitTime = 1;
         public float timer = 0;
+        bool soundPlaying = false;
 
         void Start()
         {
+            audioManager = FindObjectOfType<AudioManager>();
             steeringBasics = GetComponent<SteeringBasics>();
             flee = GetComponent<Flee>();
             wander = GetComponent<Wander1>();
@@ -52,18 +56,26 @@ namespace UnityMovementAI
             {
                 accel = flee.GetSteering(target.position);
                 ClearAnim();
+                if (!soundPlaying)
+                {
+                    audioManager.Play("BunnyFootsteps");
+                    GameObject.FindGameObjectWithTag("RabbitSound").GetComponent<AudioSource>().Play();
+                    soundPlaying = true;
+                }
                 anim.SetBool("isRunning", true);
             }
             else
             {
                 if (isWandering)
                 {
+                    StopSound();
                     accel = wander.GetSteering();
                     ClearAnim();
                     anim.SetBool("isJumping", true);
                 }
                 else
                 {
+                    StopSound();
                     ClearAnim();
                     //anim.SetBool("isLookingOut", true);
                     accel = steeringBasics.Arrive(transform.position);
@@ -89,6 +101,16 @@ namespace UnityMovementAI
             anim.SetBool("isJumping", false);
             anim.SetBool("isLookingOut", false);
             anim.SetBool("isRunning", false);
+        }
+
+        private void StopSound()
+        {
+            if (soundPlaying)
+            {
+                audioManager.Stop("BunnyFootsteps");
+                GameObject.FindGameObjectWithTag("RabbitSound").GetComponent<AudioSource>().Stop();
+                soundPlaying = false;
+            }
         }
     }
 }

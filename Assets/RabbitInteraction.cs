@@ -13,6 +13,7 @@ public class RabbitInteraction : MonoBehaviour
 
     public void Interact()
     {
+        GameObject.FindGameObjectWithTag("RabbitSound").GetComponent<AudioSource>().Stop();
         gameManager.CatchRabbit();
         Debug.Log("Catch Rabbit");
         Destroy(this.gameObject);

@@ -9,11 +9,13 @@ public class FireflyRoam : MonoBehaviour
     public float jitter = .5f;
     private Vector3 center;
     private Vector3 currentDestination;
+    public float height;
 
     // Start is called before the first frame update
     void Start()
     {
         center = transform.position;
+        height = transform.position.y;
         PickDestination();
     }
 
@@ -34,6 +36,6 @@ public class FireflyRoam : MonoBehaviour
     {
         var randomX = Random.Range(center.x - radius, center.x + radius);
         var randomZ = Random.Range(center.z - radius, center.z + radius);
-        currentDestination = new Vector3(randomX, transform.position.y, randomZ);
+        currentDestination = new Vector3(randomX, height, randomZ);
     }
 }

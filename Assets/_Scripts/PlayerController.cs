@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float gravity = 9.6f;
     [SerializeField] bool playerGrounded;
     private Animator anim;
+    private bool footstep = true;
 
     private void Start()
     {
@@ -43,10 +44,26 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             characterController.Move(direction * movementSpeed * Time.deltaTime);
+            if (!GetComponent<AudioSource>().isPlaying && footstep)
+            {
+                GetComponent<AudioSource>().Play();
+                footstep = false;
+                StartCoroutine(ToggleFootsteps());
+            }
         }
         else
         {
+            if (GetComponent<AudioSource>().isPlaying)
+            {
+                GetComponent<AudioSource>().Stop();
+            }
             anim.SetBool("isWalking", false);
         }
+    }
+
+    IEnumerator ToggleFootsteps()
+    {
+        yield return new WaitForSeconds(.45f);
+        footstep = true;
     }
 }
